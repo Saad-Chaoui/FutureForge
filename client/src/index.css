@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Chat typing animation is defined in the @layer components section below */
+
 @layer base {
   :root {
     /* Shadcn variables */

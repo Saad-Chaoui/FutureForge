@@ -32,14 +32,15 @@ export default function AiDemo() {
   // Send message mutation
   const { mutate: sendMessage, isPending } = useMutation({
     mutationFn: async (content: string) => {
-      return await apiRequest("POST", "/api/chat/message", { content });
+      const response = await apiRequest("POST", "/api/chat/message", { content });
+      return await response.json();
     },
-    onSuccess: (data) => {
+    onSuccess: (data: any) => {
       // Add assistant message to the chat
       const assistantMessage: Message = {
-        id: Date.now().toString(),
-        role: "assistant",
-        content: data.content
+        id: data.id || Date.now().toString(),
+        role: data.role || "assistant",
+        content: data.content || "I'm not sure how to respond to that."
       };
       setChatMessages(prev => [...prev, assistantMessage]);
       setIsTyping(false);
