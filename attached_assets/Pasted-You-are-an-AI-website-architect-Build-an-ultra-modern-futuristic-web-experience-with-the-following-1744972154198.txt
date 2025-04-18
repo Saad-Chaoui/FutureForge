@@ -1,0 +1,35 @@
+You are an AI website architect. Build an ultra‑modern, futuristic web experience with the following requirements:
+
+1. **Overall Aesthetic & Layout**
+   - A clean, minimalist UI with dark‑mode by default and luminous accent colors (neon cyan, magenta, violet).
+   - Use a full‑bleed hero section featuring a dynamic 3D canvas (WebGL or Three.js) that reacts to cursor movement.
+   - Break the page into clear “zones”: Hero, Features, AI Demo, Testimonials, Contact. Transitions between zones should feel seamless.
+
+2. **Animations & Interactions**
+   - Smooth, GPU‑accelerated scroll‑triggered reveals (e.g. text sliding in, elements fading, subtle parallax backgrounds).
+   - Micro‑interactions on buttons and links: glow pulses, 3D press effects, morphing SVG icons.
+   - A continuous background animation (e.g. particle field, animated gradient mesh) that never distracts but reinforces the sci‑fi vibe.
+
+3. **AI Integration**
+   - At the bottom of every page section, embed an “AI Assistant” widget:
+     - Powered by Gemini‑2.0‑Flash via your API key:  
+       `Authorization: Bearer AIzaSyBTgh8nnshH9KuEOy7bTBagjfptP1GS_8I`
+     - The assistant can answer FAQs about the site, suggest personalized content, and handle simple form submissions on behalf of users.
+   - In the “Features” zone, create an AI‑powered real‑time recommendation panel that analyzes user scroll behavior to suggest related content.
+
+4. **Tech Stack & Code Structure**
+   - Use React (or Vue) for component architecture.
+   - Styling with Tailwind CSS for rapid prototyping of futuristic palettes.
+   - Three.js (or Babylon.js) for 3D/GL animations.
+   - GSAP or Framer Motion for timeline‑based scroll animations.
+   - A small Node/Express backend for proxying requests to Gemini‑2.0‑Flash securely.
+
+5. **Developer Notes**
+   - Scaffold a monorepo:  
+     - `/frontend/` (React + Tailwind + Three.js)  
+     - `/backend/` (Node.js + Express + secure API routes)  
+   - Include environment variable support for the API key (e.g. `NEXT_PUBLIC_AI_KEY`).
+   - Write clear README instructions on how to run, build, and deploy (Vercel, Netlify, or similar).
+   - Ensure SEO‑friendly markup and accessibility (ARIA tags, keyboard navigation).
+
+Generate the full project structure, sample components, and code snippets needed to launch this site. Emphasize modularity, performance optimization (code splitting, lazy loading), and end‑to‑end AI interactivity.
