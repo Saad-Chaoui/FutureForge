@@ -15,7 +15,8 @@ interface Message {
 export default function AiDemo() {
   const [ref, inView] = useInView({
     triggerOnce: true,
-    threshold: 0.2,
+    threshold: 0.1,
+    rootMargin: "0px 0px -10% 0px", // Trigger slightly before element is in full view
   });
 
   const messagesEndRef = useRef<HTMLDivElement>(null);
@@ -68,9 +69,14 @@ export default function AiDemo() {
     setIsTyping(true);
   };
 
-  // Scroll to bottom when messages change
+  // Scroll chat container to bottom when messages change, not the whole page
   useEffect(() => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+    if (messagesEndRef.current) {
+      const chatContainer = document.getElementById('ai-chat-messages');
+      if (chatContainer) {
+        chatContainer.scrollTop = chatContainer.scrollHeight;
+      }
+    }
   }, [chatMessages, isTyping]);
 
   // Animation variants
