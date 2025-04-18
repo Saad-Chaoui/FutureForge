@@ -43,6 +43,26 @@
 
 FutureLabs AI showcases cutting-edge AI capabilities in a modern web interface, allowing users to interact with artificial intelligence through an intuitive and visually stunning experience.
 
+### Screenshots
+
+The application features several key sections:
+
+#### 🏠 Hero Section
+![Hero Section](screenshots/hero-section.png)
+*Featuring an immersive 3D animation and introduction to our platform*
+
+#### 🔍 AI Chat Demo
+![AI Chat](screenshots/ai-chat.png)
+*Interactive AI assistant powered by Google's Gemini 2.0 Flash model*
+
+#### ✨ Feature Showcase
+![Features](screenshots/features.png)
+*Highlighting the key capabilities and benefits of our platform*
+
+#### 👥 Testimonials
+![Testimonials](screenshots/testimonials.png)
+*Success stories from satisfied clients*
+
 ## 🛠️ Getting Started
 
 ### Prerequisites

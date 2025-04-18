@@ -1,6 +1,6 @@
 import fetch from "node-fetch";
 
-const GEMINI_API_KEY = process.env.GEMINI_API_KEY || "AIzaSyBTgh8nnshH9KuEOy7bTBagjfptP1GS_8I";
+const GEMINI_API_KEY = process.env.GEMINI_API_KEY || "YOUR_GEMINI_API_KEY";
 const GEMINI_API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent";
 
 // System prompt to define the assistant's behavior
