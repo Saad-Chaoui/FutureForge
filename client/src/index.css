@@ -76,8 +76,8 @@
     left: 0;
     right: 0;
     bottom: 0;
-    border: 1px solid theme('colors.neon.cyan');
-    box-shadow: 0 0 8px theme('colors.neon.cyan'), inset 0 0 8px theme('colors.neon.cyan');
+    border: 1px solid hsl(var(--neon-cyan));
+    box-shadow: 0 0 8px hsl(var(--neon-cyan)), inset 0 0 8px hsl(var(--neon-cyan));
     opacity: 0;
     transition: opacity 0.3s ease;
     pointer-events: none;
