@@ -56,7 +56,7 @@ export async function handleGeminiChat(message: string, context: string = "gener
       })
     });
 
-    const data = await response.json();
+    const data = await response.json() as any;
     
     if (!response.ok) {
       console.error("Gemini API error:", data);
@@ -111,7 +111,7 @@ export async function getGeminiWelcomeMessage(section: string): Promise<string> 
       })
     });
 
-    const data = await response.json();
+    const data = await response.json() as any;
     
     if (!response.ok) {
       return defaultMessages[section] || defaultMessages.hero;

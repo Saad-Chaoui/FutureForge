@@ -21,19 +21,28 @@ export default function AiDemo() {
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const [inputValue, setInputValue] = useState("");
   const [isTyping, setIsTyping] = useState(false);
-  
-  // Fetch initial messages
-  const { data: messages = [], refetch } = useQuery<Message[]>({
-    queryKey: ['/api/chat/history'],
-  });
+  const [chatMessages, setChatMessages] = useState<Message[]>([
+    {
+      id: "welcome",
+      role: "assistant",
+      content: "Hello! I'm your AI assistant. I can help you learn about our technology, answer questions, or assist with tasks. What would you like to know today?"
+    }
+  ]);
 
   // Send message mutation
   const { mutate: sendMessage, isPending } = useMutation({
     mutationFn: async (content: string) => {
       return await apiRequest("POST", "/api/chat/message", { content });
     },
-    onSuccess: () => {
-      refetch();
+    onSuccess: (data) => {
+      // Add assistant message to the chat
+      const assistantMessage: Message = {
+        id: Date.now().toString(),
+        role: "assistant",
+        content: data.content
+      };
+      setChatMessages(prev => [...prev, assistantMessage]);
+      setIsTyping(false);
     },
   });
 
@@ -43,27 +52,25 @@ export default function AiDemo() {
     if (!inputValue.trim() || isPending) return;
     
     // Add optimistic user message to UI
-    const newMessage = {
+    const userMessage: Message = {
       id: Date.now().toString(),
       role: "user",
       content: inputValue
     };
     
+    // Add user message to the chat
+    setChatMessages(prev => [...prev, userMessage]);
+    
     // Send to API
     sendMessage(inputValue);
     setInputValue("");
     setIsTyping(true);
-
-    // After a delay, simulate the assistant is done typing
-    setTimeout(() => {
-      setIsTyping(false);
-    }, 2000);
   };
 
   // Scroll to bottom when messages change
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [messages, isTyping]);
+  }, [chatMessages, isTyping]);
 
   // Animation variants
   const containerVariants = {
@@ -151,7 +158,7 @@ export default function AiDemo() {
           </div>
           
           <div className="p-4 h-80 overflow-y-auto" id="ai-chat-messages">
-            {messages.map((message, index) => (
+            {chatMessages.map((message, index) => (
               <motion.div
                 key={message.id}
                 className={`flex mb-4 ${message.role === "user" ? "justify-end" : ""}`}
